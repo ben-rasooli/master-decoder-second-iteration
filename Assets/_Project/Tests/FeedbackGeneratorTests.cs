@@ -29,15 +29,15 @@ namespace Tests
             Code code = createCode(combination);
             Guess guess = createGuess(combination);
             FeedbackGenerator sut = new FeedbackGenerator(code, new List<int> { 0 });
-            var expectedFeedback = new FeedbackResult { CorrectPieces = 1, MisplacedPieces = 0, SimilarPieces = 0 };
 
             var actualFeedback = sut.Calculate(guess);
 
-            Assert.AreEqual(expectedFeedback, actualFeedback);
+            Assert.AreEqual(1, actualFeedback.CorrectPieces);
+            Assert.AreEqual(0, actualFeedback.MisplacedPieces);
         }
 
         [Test]
-        public void Calculate_returns_DisplacedPiece_when_guss_piece_is_same_as_code_piece_but_in_wrong_place()
+        public void Calculate_returns_MisplacedPiece_when_guss_piece_is_same_as_code_piece_but_in_wrong_place()
         {
             Code code = createCode(new List<int[]>{
                 new[] { 1, 1 },
@@ -48,11 +48,11 @@ namespace Tests
                 new[] { 1, 1 }
             });
             FeedbackGenerator sut = new FeedbackGenerator(code, new List<int> { 0, 1 });
-            var expectedFeedback = new FeedbackResult { CorrectPieces = 0, MisplacedPieces = 2, SimilarPieces = 0 };
 
             var actualFeedback = sut.Calculate(guess);
 
-            Assert.AreEqual(expectedFeedback, actualFeedback);
+            Assert.AreEqual(0, actualFeedback.CorrectPieces);
+            Assert.AreEqual(2, actualFeedback.MisplacedPieces);
         }
 
         [Test]
@@ -65,11 +65,11 @@ namespace Tests
                 new[] { 1, 1 }
             });
             FeedbackGenerator sut = new FeedbackGenerator(code, new List<int> { 0 });
-            var expectedFeedback = new FeedbackResult { CorrectPieces = 0, MisplacedPieces = 0, SimilarPieces = 1 };
 
             var actualFeedback = sut.Calculate(guess);
 
-            Assert.AreEqual(expectedFeedback, actualFeedback);
+            Assert.AreEqual(0, actualFeedback.CorrectPieces);
+            Assert.AreEqual(1, actualFeedback.SimilarPieces);
         }
 
         [Test]
@@ -84,11 +84,12 @@ namespace Tests
                 new[] { 1, 2 }
             });
             FeedbackGenerator sut = new FeedbackGenerator(code, new List<int> { 0, 1 });
-            var expectedFeedback = new FeedbackResult { CorrectPieces = 0, MisplacedPieces = 1, SimilarPieces = 1 };
 
             var actualFeedback = sut.Calculate(guess);
 
-            Assert.AreEqual(expectedFeedback, actualFeedback);
+            Assert.AreEqual(0, actualFeedback.CorrectPieces);
+            Assert.AreEqual(1, actualFeedback.MisplacedPieces);
+            Assert.AreEqual(1, actualFeedback.SimilarPieces);
         }
 
         [Test]
@@ -112,22 +113,25 @@ namespace Tests
                     new []{3, 1}
                 });
 
-            FeedbackResult expectedFeedback = new FeedbackResult { CorrectPieces = 1, MisplacedPieces = 0 };
+            var actualFeedback = sut.Calculate(guess);
 
-            var actualResult = sut.Calculate(guess);
-
-            Assert.AreEqual(expectedFeedback, actualResult);
+            Assert.AreEqual(1, actualFeedback.CorrectPieces);
+            Assert.AreEqual(0, actualFeedback.MisplacedPieces);
         }
 
         [TestCaseSource(typeof(ArbitraryTestsData), "TestCases")]
         public void arbitraryTests(ArbitraryTestData data)
         {
-            List<FeedbackResult> actualFeedbacks = new List<FeedbackResult>();
+            List<Feedback> actualFeedbacks = new List<Feedback>();
             for (int i = 0; i < data.FeedbackGenerators.Count; i++)
                 actualFeedbacks.Add(data.FeedbackGenerators[i].Calculate(data.Guess));
 
             for (int i = 0; i < data.ExpectedFeedbacks.Count; i++)
-                Assert.AreEqual(data.ExpectedFeedbacks[i], actualFeedbacks[i]);
+            {
+                Assert.AreEqual(data.ExpectedFeedbacks[i].CorrectPieces, actualFeedbacks[i].CorrectPieces);
+                Assert.AreEqual(data.ExpectedFeedbacks[i].MisplacedPieces, actualFeedbacks[i].MisplacedPieces);
+                Assert.AreEqual(data.ExpectedFeedbacks[i].SimilarPieces, actualFeedbacks[i].SimilarPieces);
+            }
         }
 
         #region details
@@ -170,8 +174,8 @@ namespace Tests
                 });
                 data_1.FeedbackGenerators.Add(new FeedbackGenerator(data_1.Code, new List<int> { 0, 1, 2, 3, 4, 5 }));
                 data_1.FeedbackGenerators.Add(new FeedbackGenerator(data_1.Code, new List<int> { 1, 2, 3, 4 }));
-                data_1.ExpectedFeedbacks.Add(new FeedbackResult { CorrectPieces = 1, MisplacedPieces = 4 });
-                data_1.ExpectedFeedbacks.Add(new FeedbackResult { CorrectPieces = 1, MisplacedPieces = 3 });
+                data_1.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 1, MisplacedPieces = 4 });
+                data_1.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 1, MisplacedPieces = 3 });
 
                 arbitraryTestDataList.Add(data_1);
                 #endregion
@@ -198,8 +202,8 @@ namespace Tests
                 });
                 data_2.FeedbackGenerators.Add(new FeedbackGenerator(data_2.Code, new List<int> { 0, 1, 2, 3, 4, 5 }));
                 data_2.FeedbackGenerators.Add(new FeedbackGenerator(data_2.Code, new List<int> { 1, 2, 3, 4 }));
-                data_2.ExpectedFeedbacks.Add(new FeedbackResult { CorrectPieces = 2, MisplacedPieces = 1 });
-                data_2.ExpectedFeedbacks.Add(new FeedbackResult { CorrectPieces = 1, MisplacedPieces = 1 });
+                data_2.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 2, MisplacedPieces = 1 });
+                data_2.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 1, MisplacedPieces = 1 });
 
                 arbitraryTestDataList.Add(data_2);
                 #endregion
@@ -226,8 +230,8 @@ namespace Tests
                 });
                 data_3.FeedbackGenerators.Add(new FeedbackGenerator(data_3.Code, new List<int> { 0, 1, 2, 3, 4, 5 }));
                 data_3.FeedbackGenerators.Add(new FeedbackGenerator(data_3.Code, new List<int> { 1, 2, 3, 4 }));
-                data_3.ExpectedFeedbacks.Add(new FeedbackResult { CorrectPieces = 1, MisplacedPieces = 4 });
-                data_3.ExpectedFeedbacks.Add(new FeedbackResult { CorrectPieces = 1, MisplacedPieces = 3 });
+                data_3.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 1, MisplacedPieces = 4 });
+                data_3.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 1, MisplacedPieces = 3 });
 
                 arbitraryTestDataList.Add(data_3);
                 #endregion
@@ -254,8 +258,8 @@ namespace Tests
                 });
                 data_4.FeedbackGenerators.Add(new FeedbackGenerator(data_4.Code, new List<int> { 0, 1, 2, 3, 4, 5 }));
                 data_4.FeedbackGenerators.Add(new FeedbackGenerator(data_4.Code, new List<int> { 1, 2, 3, 4 }));
-                data_4.ExpectedFeedbacks.Add(new FeedbackResult { CorrectPieces = 1, MisplacedPieces = 4 });
-                data_4.ExpectedFeedbacks.Add(new FeedbackResult { CorrectPieces = 1, MisplacedPieces = 3 });
+                data_4.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 1, MisplacedPieces = 4 });
+                data_4.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 1, MisplacedPieces = 3 });
 
                 arbitraryTestDataList.Add(data_4);
                 #endregion
@@ -267,12 +271,12 @@ namespace Tests
             public Code Code { get; set; }
             public Guess Guess { get; set; }
             public List<FeedbackGenerator> FeedbackGenerators { get; set; }
-            public List<FeedbackResult> ExpectedFeedbacks { get; set; }
+            public List<Feedback> ExpectedFeedbacks { get; set; }
 
             public ArbitraryTestData()
             {
                 FeedbackGenerators = new List<FeedbackGenerator>();
-                ExpectedFeedbacks = new List<FeedbackResult>();
+                ExpectedFeedbacks = new List<Feedback>();
             }
         }
 

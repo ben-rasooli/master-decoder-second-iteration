@@ -13,9 +13,9 @@ namespace Project
             _piecesToCheck = piecesToCheck;
         }
 
-        public FeedbackResult Calculate(Guess guess)
+        public Feedback Calculate(Guess guess)
         {
-            FeedbackResult result = new FeedbackResult();
+            Feedback result = new Feedback();
 
             if (guess?.Pieces.Count != _code.Pieces.Count)
                 throw new System.InvalidOperationException("guess.Pieces length should match the code.Pieces length");
@@ -23,6 +23,7 @@ namespace Project
             List<Piece> codePieces = new List<Piece>(_code.Pieces);
             List<Piece> guessPieces = new List<Piece>(guess.Pieces);
 
+            result.ReferencingPieces = _piecesToCheck;
             setCorrectPieces(ref result, codePieces, guessPieces);
             setSimilarPieces(ref result, codePieces, guessPieces);
             setDisplacedPieces(ref result, codePieces, guessPieces);
@@ -30,7 +31,7 @@ namespace Project
             return result;
         }
 
-        void setCorrectPieces(ref FeedbackResult result, List<Piece> codePieces, List<Piece> guessPieces)
+        void setCorrectPieces(ref Feedback result, List<Piece> codePieces, List<Piece> guessPieces)
         {
             for (int i = 0; i < codePieces.Count; i++)
             {
@@ -48,7 +49,7 @@ namespace Project
             }
         }
 
-        void setSimilarPieces(ref FeedbackResult result, List<Piece> codePieces, List<Piece> guessPieces)
+        void setSimilarPieces(ref Feedback result, List<Piece> codePieces, List<Piece> guessPieces)
         {
             for (int i = 0; i < codePieces.Count; i++)
             {
@@ -60,7 +61,7 @@ namespace Project
             }
         }
 
-        void setDisplacedPieces(ref FeedbackResult result, List<Piece> codePieces, List<Piece> guessPieces)
+        void setDisplacedPieces(ref Feedback result, List<Piece> codePieces, List<Piece> guessPieces)
         {
             foreach (var pieceIndex in _piecesToCheck)
             {
@@ -77,7 +78,7 @@ namespace Project
             }
         }
 
-        #region details
+        #region ----------------------------------------details
         Piece _nullPiece = new Piece { Symbol = PieceSymbol.None, Color = PieceColor.None };
         #endregion
     }
