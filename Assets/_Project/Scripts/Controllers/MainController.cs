@@ -36,6 +36,11 @@ namespace Project
         {
             _FSM.SendEvent(gotoMainMenuState, null);
         }
+
+        public void HandlePlay_BackButtonClick()
+        {
+            _FSM.SendEvent(gotoMainMenuState, null);
+        }
         EventData gotoMainMenuState = new EventData("gotoMainMenuState");
         #endregion
 
