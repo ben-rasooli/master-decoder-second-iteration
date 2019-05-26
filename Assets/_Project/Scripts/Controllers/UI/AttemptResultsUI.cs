@@ -2,6 +2,7 @@
 using DG.Tweening;
 using Zenject;
 using System;
+using UnityEngine.UI;
 
 #pragma warning disable 0649, 0414
 namespace Project
@@ -11,14 +12,15 @@ namespace Project
         #region ----------------------------------------dependencies
         [Inject(Id = "attemptResultUI")] RectTransform _attemptResultUI;
         [Inject(Id = "guessingPanel")] RectTransform _guessingPanel;
+        [Inject] ScrollRect _scrollRect;
         #endregion
 
         #region ----------------------------------------API
         public void AddAttemptResult(AttemptResult result, Action onCompleted)
         {
-            expandHieght();
+            expandScrollHieght();
             createAndAddNewAttemptResultUI(result);
-            shrinkHieght(onCompleted);
+            shrinkScrollHieght(onCompleted);
         }
         #endregion
 
@@ -26,27 +28,29 @@ namespace Project
         void Start()
         {
             _transform = GetComponent<RectTransform>();
+            _scrollRectTransform = _scrollRect.GetComponent<RectTransform>();
             Canvas.ForceUpdateCanvases();// this needed to make sure UI is updated before accessing it values
             _attemptResultHeight = _attemptResultUI.GetComponent<RectTransform>().rect.height;
             _guessingPanelHeight = _guessingPanel.GetComponent<RectTransform>().rect.height;
-            _parrentHeight = _transform.parent.GetComponent<RectTransform>().rect.height;
-            _normalHeight = _parrentHeight - _guessingPanelHeight;
-            _expandedHeight = _normalHeight + _attemptResultHeight;
-            _transform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _normalHeight);
+            _scrollParrentHeight = _scrollRectTransform.parent.GetComponent<RectTransform>().rect.height;
+            _scrollNormalHeight = _scrollParrentHeight - _guessingPanelHeight;
+            _scrollExpandedHeight = _scrollNormalHeight + _attemptResultHeight;
+            _scrollRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _scrollNormalHeight);
         }
         #endregion
 
         #region ----------------------------------------details
         RectTransform _transform;
+        RectTransform _scrollRectTransform;
         float _attemptResultHeight;
         float _guessingPanelHeight;
-        float _parrentHeight;
-        float _normalHeight;
-        float _expandedHeight;
+        float _scrollParrentHeight;
+        float _scrollNormalHeight;
+        float _scrollExpandedHeight;
 
-        void expandHieght()
+        void expandScrollHieght()
         {
-            _transform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _expandedHeight);
+            _scrollRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _scrollExpandedHeight);
         }
 
         void createAndAddNewAttemptResultUI(AttemptResult result)
@@ -56,15 +60,17 @@ namespace Project
         }
 
         [SerializeField] float _addingNewAttemptResultSpeed;
-        void shrinkHieght(Action onCompleted)
+        void shrinkScrollHieght(Action onCompleted)
         {
             DOTween.Kill(this, true);
             DOTween.To(
-                () => _transform.sizeDelta.y,
-                height => _transform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height),
-                _normalHeight,
+                () => _scrollRectTransform.sizeDelta.y,
+                height => _scrollRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height),
+                _scrollNormalHeight,
                 _addingNewAttemptResultSpeed)
                    .OnComplete(() => onCompleted.Invoke());
+
+            _scrollRect.velocity = new Vector2(0, 1000);
         }
         #endregion
     }

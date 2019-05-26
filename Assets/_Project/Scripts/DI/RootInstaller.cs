@@ -9,12 +9,11 @@ namespace Project
     public class RootInstaller : MonoInstaller
     {
         [SerializeField] FSM _mainControllerFSM;
-        [SerializeField] MainController _mainController;
 
         public override void InstallBindings()
         {
             Container.Bind<SceneDirector>().FromMethod(createSceneDirector).AsCached().NonLazy();
-            Container.BindInstance(_mainController).AsCached().NonLazy();
+            Container.BindInterfacesAndSelfTo<MainController>().AsCached();
             Container.Bind<FSM>().WithId("MainControllerFSM").FromMethod(injectMainControllerFSM).AsCached();
         }
 

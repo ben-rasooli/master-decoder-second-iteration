@@ -7,7 +7,9 @@ namespace Project
     public class GameOverUI : MonoBehaviour
     {
         #region ----------------------------------------dependencies
+        [Inject] SignalBus _signalBus;
         [Inject] MainController _mainController;
+        [Inject(Id = "gameOverPopup")] UIPopup _popup;
         [Inject(Id = "okButton")] UIButton _okButton;
         #endregion
 
@@ -18,6 +20,33 @@ namespace Project
             {
                 _mainController.Handle_GameOverPopupButtonClick();
             });
+        }
+
+        void OnEnable()
+        {
+            subscribeToSignals();
+        }
+
+        void OnDestroy()
+        {
+            unsubscribeFromSignals();
+        }
+        #endregion
+
+        #region ----------------------------------------signals
+        void subscribeToSignals()
+        {
+            _signalBus.Subscribe<GameIsOverSignal>(onGameIsOver);
+        }
+
+        void unsubscribeFromSignals()
+        {
+            _signalBus.TryUnsubscribe<GameIsOverSignal>(onGameIsOver);
+        }
+
+        void onGameIsOver(GameIsOverSignal arg)
+        {
+            _popup.Show();
         }
         #endregion
 

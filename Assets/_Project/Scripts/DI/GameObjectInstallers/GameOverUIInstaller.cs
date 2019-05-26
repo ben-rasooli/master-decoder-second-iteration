@@ -10,6 +10,7 @@ namespace Project
         {
             Container.Bind<TextMeshProUGUI>().WithId("titleText").FromMethod(getTitleText).AsCached();
             Container.Bind<TextMeshProUGUI>().WithId("descriptionText").FromMethod(getDescriptionText).AsCached();
+            Container.Bind<UIPopup>().WithId("gameOverPopup").FromComponentOnRoot().AsCached();
             Container.Bind<UIButton>().WithId("okButton").FromComponentInChildren().AsCached();
         }
 

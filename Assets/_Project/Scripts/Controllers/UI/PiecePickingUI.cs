@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-#pragma warning disable 0649, 0414
+#pragma warning disable 0649, 0414, IDE0051
 namespace Project
 {
     public class PiecePickingUI : MonoBehaviour
     {
         #region ----------------------------------------dependencies
-        //[Inject] RectTransform _attemptResultUIPrefab;
+        [Inject] AttemptResultUI _attemptResultUI;
         #endregion
 
         #region ----------------------------------------API
@@ -39,16 +40,34 @@ namespace Project
         #region ----------------------------------------Unity Messages
         void Start()
         {
-            _transform = GetComponent<RectTransform>();
             _piece = new Piece();
+            _piecePickingSymbolUIs = new List<PiecePickingSymbolUI>(GetComponentsInChildren<PiecePickingSymbolUI>());
+            _piecePickingColorUIs = new List<PiecePickingColorUI>(GetComponentsInChildren<PiecePickingColorUI>());
+            setupSymbolAndColorUIs();
             Hide();
         }
         #endregion
 
         #region ----------------------------------------details
-        RectTransform _transform;
         Piece _piece;
+        List<PiecePickingSymbolUI> _piecePickingSymbolUIs;
+        List<PiecePickingColorUI> _piecePickingColorUIs;
         Action<Piece> _onPiecePicked;
+
+        void setupSymbolAndColorUIs()
+        {
+            _piecePickingSymbolUIs.ForEach(UI => UI.gameObject.SetActive(false));
+            _piecePickingColorUIs.ForEach(UI => UI.gameObject.SetActive(false));
+
+            for (int i = 0; i < _attemptResultUI.SymbolCount; i++)
+                _piecePickingSymbolUIs[i].gameObject.SetActive(true);
+
+            if (_attemptResultUI.ColorCount == 1)
+                return;
+
+            for (int i = 0; i < _attemptResultUI.ColorCount; i++)
+                _piecePickingColorUIs[i].gameObject.SetActive(true);
+        }
         #endregion
     }
 }

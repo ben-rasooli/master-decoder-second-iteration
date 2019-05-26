@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using Doozy.Engine.SceneManagement;
-using Doozy.Engine.Progress;
+﻿using UnityEngine.SceneManagement;
 using NodeCanvas.StateMachines;
 using Zenject;
 using ParadoxNotion;
@@ -9,12 +6,11 @@ using ParadoxNotion;
 #pragma warning disable 0649, 0414
 namespace Project
 {
-    public class MainController : MonoBehaviour
+    public class MainController : IInitializable
     {
         #region ----------------------------------------dependencies
-        [Inject] SceneDirector _sceneDirector;
         [Inject(Id = "MainControllerFSM")] FSM _FSM;
-        [Inject(Id = "sceneLoadingProgressor")] Progressor _progressor;
+
         #endregion
 
         #region ----------------------------------------API
@@ -22,15 +18,12 @@ namespace Project
 
         public void LoadScene(string sceneName)
         {
-            SceneManager.sceneLoaded += OnSceneLoaded;
-            var sceneLoader = SceneDirector.LoadSceneAsync(sceneName, LoadSceneMode.Additive, _progressor);
-            sceneLoader.SceneActivationDelay = 0.4f;
-            sceneLoader.SetSelfDestructAfterSceneLoaded(true);
+            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         }
 
         public void UnloadScene(string sceneName)
         {
-            SceneDirector.UnloadSceneAsync(sceneName);
+            SceneManager.UnloadSceneAsync(sceneName);
         }
 
         public void HandleMainMenu_LevelButtonClick()
@@ -46,18 +39,16 @@ namespace Project
         EventData gotoMainMenuState = new EventData("gotoMainMenuState");
         #endregion
 
-        #region ----------------------------------------Unity Messages
-        void Start()
+        #region ----------------------------------------
+        public void Initialize()
         {
-            DontDestroyOnLoad(this);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         #endregion
 
         #region ----------------------------------------details
-        void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            print(scene.name);
-            SceneManager.sceneLoaded -= OnSceneLoaded;
             SceneManager.SetActiveScene(scene);
         }
         #endregion

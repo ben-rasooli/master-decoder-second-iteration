@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
+#pragma warning disable 0649, 0414
 namespace Project
 {
     public class PlayController : MonoBehaviour

@@ -1,3 +1,8 @@
+Assets/*
+!Assets/_Project/
+!Assets/Plugins/
+!Assets/RenderingSettings/
+
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/

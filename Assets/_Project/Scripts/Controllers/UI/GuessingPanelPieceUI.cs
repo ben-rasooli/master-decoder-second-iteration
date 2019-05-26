@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 using Zenject;
@@ -23,10 +24,15 @@ namespace Project
             _piecePickingUI.Show(setPiece);
         }
 
+        void Awake()
+        {
+            _symbolText = GetComponentInChildren<TextMeshProUGUI>();
+            _colorImage = GetComponent<Image>();
+        }
+
         void Start()
         {
             Piece = new Piece();
-            _symbolText = GetComponentInChildren<TextMeshProUGUI>();
             updateUI();
 
             setPiece = piece =>
@@ -54,11 +60,22 @@ namespace Project
 
         #region ----------------------------------------details
         TextMeshProUGUI _symbolText;
+        Image _colorImage;
         Action<Piece> setPiece;
 
         void updateUI()
         {
             _symbolText.text = ((int)Piece.Symbol + 1).ToString();
+            if (Piece.Color == PieceColor.White)
+            {
+                _colorImage.color = Color.white;
+                _symbolText.color = Color.black;
+            }
+            else
+            {
+                _colorImage.color = Color.black;
+                _symbolText.color = Color.white;
+            }
         }
         #endregion
     }
