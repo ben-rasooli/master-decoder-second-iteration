@@ -9,26 +9,26 @@ namespace Tests
     public class FeedbackGeneratorTests_
     {
         [Test]
-        public void Calculate_throws_exception_if_guess_count_not_match_code_count()
+        public void Calculate_throws_exception_if_guess_count_not_match_puzzle_count()
         {
-            int codeCount = 4;
-            FeedbackGenerator sut = new FeedbackGenerator(new Code(codeCount), new List<int>());
-            var nonMatchingCountGuess_lower = new Guess(codeCount - 1);
-            var nonMatchingCountGuess_higher = new Guess(codeCount + 1);
+            int puzzleCount = 4;
+            FeedbackGenerator sut = new FeedbackGenerator(new Puzzle(puzzleCount), new List<int>());
+            var nonMatchingGuessCount_lower = new Guess(puzzleCount - 1);
+            var nonMatchingGuessCount_higher = new Guess(puzzleCount + 1);
 
-            Assert.Throws<InvalidOperationException>(() => sut.Calculate(nonMatchingCountGuess_lower));
-            Assert.Throws<InvalidOperationException>(() => sut.Calculate(nonMatchingCountGuess_higher));
+            Assert.Throws<InvalidOperationException>(() => sut.Calculate(nonMatchingGuessCount_lower));
+            Assert.Throws<InvalidOperationException>(() => sut.Calculate(nonMatchingGuessCount_higher));
         }
 
         [Test]
-        public void Calculate_returns_CorrectPiece_when_guss_piece_is_same_as_code_piece()
+        public void Calculate_returns_CorrectPiece_when_guss_piece_is_same_as_puzzle_piece()
         {
             var combination = new List<int[]>{
                 new[] { 1, 1 }
             };
-            Code code = createCode(combination);
+            Puzzle puzzle = createPuzzle(combination);
             Guess guess = createGuess(combination);
-            FeedbackGenerator sut = new FeedbackGenerator(code, new List<int> { 0 });
+            FeedbackGenerator sut = new FeedbackGenerator(puzzle, new List<int> { 0 });
 
             var actualFeedback = sut.Calculate(guess);
 
@@ -37,9 +37,9 @@ namespace Tests
         }
 
         [Test]
-        public void Calculate_returns_MisplacedPiece_when_guss_piece_is_same_as_code_piece_but_in_wrong_place()
+        public void Calculate_returns_MisplacedPiece_when_guss_piece_is_same_as_puzzle_piece_but_in_wrong_place()
         {
-            Code code = createCode(new List<int[]>{
+            Puzzle puzzle = createPuzzle(new List<int[]>{
                 new[] { 1, 1 },
                 new[] { 2, 1 }
             });
@@ -47,7 +47,7 @@ namespace Tests
                 new[] { 2, 1 },
                 new[] { 1, 1 }
             });
-            FeedbackGenerator sut = new FeedbackGenerator(code, new List<int> { 0, 1 });
+            FeedbackGenerator sut = new FeedbackGenerator(puzzle, new List<int> { 0, 1 });
 
             var actualFeedback = sut.Calculate(guess);
 
@@ -56,15 +56,15 @@ namespace Tests
         }
 
         [Test]
-        public void Calculate_returns_SimilarPiece_when_guss_piece_has_same_symbol_as_code_piece_but_with_different_color()
+        public void Calculate_returns_SimilarPiece_when_guss_piece_has_same_symbol_as_puzzle_piece_but_with_different_color()
         {
-            Code code = createCode(new List<int[]>{
+            Puzzle puzzle = createPuzzle(new List<int[]>{
                 new[] { 1, 2 }
             });
             Guess guess = createGuess(new List<int[]>{
                 new[] { 1, 1 }
             });
-            FeedbackGenerator sut = new FeedbackGenerator(code, new List<int> { 0 });
+            FeedbackGenerator sut = new FeedbackGenerator(puzzle, new List<int> { 0 });
 
             var actualFeedback = sut.Calculate(guess);
 
@@ -75,7 +75,7 @@ namespace Tests
         [Test]
         public void a_piece_can_produce_multiple_feedbacks()
         {
-            Code code = createCode(new List<int[]>{
+            Puzzle puzzle = createPuzzle(new List<int[]>{
                 new[] { 1, 2 },
                 new[] { 5, 3 } //null piece
             });
@@ -83,7 +83,7 @@ namespace Tests
                 new[] { 1, 1 },
                 new[] { 1, 2 }
             });
-            FeedbackGenerator sut = new FeedbackGenerator(code, new List<int> { 0, 1 });
+            FeedbackGenerator sut = new FeedbackGenerator(puzzle, new List<int> { 0, 1 });
 
             var actualFeedback = sut.Calculate(guess);
 
@@ -95,7 +95,7 @@ namespace Tests
         [Test]
         public void a_CorrectPiece_cannot_be_reevaluated_by_a_Subset_feedback_generator_if_it_is_ouside_of_its_scope()
         {
-            Code code = createCode(new List<int[]>{
+            Puzzle puzzle = createPuzzle(new List<int[]>{
                 new[] { 1, 1 },
                 new[] { 1, 1 },
                 new[] { 2, 1 },
@@ -103,7 +103,7 @@ namespace Tests
                 new[] { 3, 1 },
                 new[] { 3, 1 }
             });
-            FeedbackGenerator sut = new FeedbackGenerator(code, new List<int> { 1, 2, 3, 4 });
+            FeedbackGenerator sut = new FeedbackGenerator(puzzle, new List<int> { 1, 2, 3, 4 });
             Guess guess = createGuess(new List<int[]>{
                     new []{4, 1},
                     new []{4, 1},
@@ -144,7 +144,7 @@ namespace Tests
                     initializeData();
 
                     foreach (var data in arbitraryTestDataList)
-                        yield return new TestCaseData(data).SetName(string.Format("{0}  {1}", data.Code, data.Guess));
+                        yield return new TestCaseData(data).SetName(string.Format("{0}  {1}", data.Puzzle, data.Guess));
                 }
             }
             static List<ArbitraryTestData> arbitraryTestDataList;
@@ -154,7 +154,7 @@ namespace Tests
                 arbitraryTestDataList = new List<ArbitraryTestData>();
                 #region Arbitrary Test Data 1
                 var data_1 = new ArbitraryTestData();
-                data_1.Code = createCode(new List<int[]>
+                data_1.Puzzle = createPuzzle(new List<int[]>
                 {
                     new[] { 1, 1 },
                     new[] { 1, 1 },
@@ -172,8 +172,8 @@ namespace Tests
                     new []{2, 1},
                     new []{2, 1}
                 });
-                data_1.FeedbackGenerators.Add(new FeedbackGenerator(data_1.Code, new List<int> { 0, 1, 2, 3, 4, 5 }));
-                data_1.FeedbackGenerators.Add(new FeedbackGenerator(data_1.Code, new List<int> { 1, 2, 3, 4 }));
+                data_1.FeedbackGenerators.Add(new FeedbackGenerator(data_1.Puzzle, new List<int> { 0, 1, 2, 3, 4, 5 }));
+                data_1.FeedbackGenerators.Add(new FeedbackGenerator(data_1.Puzzle, new List<int> { 1, 2, 3, 4 }));
                 data_1.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 1, MisplacedPieces = 4 });
                 data_1.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 1, MisplacedPieces = 3 });
 
@@ -182,7 +182,7 @@ namespace Tests
 
                 #region Arbitrary Test Data 2
                 var data_2 = new ArbitraryTestData();
-                data_2.Code = createCode(new List<int[]>
+                data_2.Puzzle = createPuzzle(new List<int[]>
                 {
                     new[] { 1, 1 },
                     new[] { 1, 1 },
@@ -200,8 +200,8 @@ namespace Tests
                     new []{3, 1},
                     new []{3, 1}
                 });
-                data_2.FeedbackGenerators.Add(new FeedbackGenerator(data_2.Code, new List<int> { 0, 1, 2, 3, 4, 5 }));
-                data_2.FeedbackGenerators.Add(new FeedbackGenerator(data_2.Code, new List<int> { 1, 2, 3, 4 }));
+                data_2.FeedbackGenerators.Add(new FeedbackGenerator(data_2.Puzzle, new List<int> { 0, 1, 2, 3, 4, 5 }));
+                data_2.FeedbackGenerators.Add(new FeedbackGenerator(data_2.Puzzle, new List<int> { 1, 2, 3, 4 }));
                 data_2.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 2, MisplacedPieces = 1 });
                 data_2.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 1, MisplacedPieces = 1 });
 
@@ -210,7 +210,7 @@ namespace Tests
 
                 #region Arbitrary Test Data 3
                 var data_3 = new ArbitraryTestData();
-                data_3.Code = createCode(new List<int[]>
+                data_3.Puzzle = createPuzzle(new List<int[]>
                 {
                     new[] { 1, 1 },
                     new[] { 1, 1 },
@@ -228,8 +228,8 @@ namespace Tests
                     new []{2, 1},
                     new []{1, 1}
                 });
-                data_3.FeedbackGenerators.Add(new FeedbackGenerator(data_3.Code, new List<int> { 0, 1, 2, 3, 4, 5 }));
-                data_3.FeedbackGenerators.Add(new FeedbackGenerator(data_3.Code, new List<int> { 1, 2, 3, 4 }));
+                data_3.FeedbackGenerators.Add(new FeedbackGenerator(data_3.Puzzle, new List<int> { 0, 1, 2, 3, 4, 5 }));
+                data_3.FeedbackGenerators.Add(new FeedbackGenerator(data_3.Puzzle, new List<int> { 1, 2, 3, 4 }));
                 data_3.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 1, MisplacedPieces = 4 });
                 data_3.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 1, MisplacedPieces = 3 });
 
@@ -238,7 +238,7 @@ namespace Tests
 
                 #region Arbitrary Test Data 4
                 var data_4 = new ArbitraryTestData();
-                data_4.Code = createCode(new List<int[]>
+                data_4.Puzzle = createPuzzle(new List<int[]>
                 {
                     new[] { 1, 1 },
                     new[] { 1, 1 },
@@ -256,8 +256,8 @@ namespace Tests
                     new []{2, 1},
                     new []{1, 1}
                 });
-                data_4.FeedbackGenerators.Add(new FeedbackGenerator(data_4.Code, new List<int> { 0, 1, 2, 3, 4, 5 }));
-                data_4.FeedbackGenerators.Add(new FeedbackGenerator(data_4.Code, new List<int> { 1, 2, 3, 4 }));
+                data_4.FeedbackGenerators.Add(new FeedbackGenerator(data_4.Puzzle, new List<int> { 0, 1, 2, 3, 4, 5 }));
+                data_4.FeedbackGenerators.Add(new FeedbackGenerator(data_4.Puzzle, new List<int> { 1, 2, 3, 4 }));
                 data_4.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 1, MisplacedPieces = 4 });
                 data_4.ExpectedFeedbacks.Add(new Feedback { CorrectPieces = 1, MisplacedPieces = 3 });
 
@@ -268,7 +268,7 @@ namespace Tests
 
         public class ArbitraryTestData
         {
-            public Code Code { get; set; }
+            public Puzzle Puzzle { get; set; }
             public Guess Guess { get; set; }
             public List<FeedbackGenerator> FeedbackGenerators { get; set; }
             public List<Feedback> ExpectedFeedbacks { get; set; }
@@ -280,9 +280,9 @@ namespace Tests
             }
         }
 
-        static Code createCode(List<int[]> values)
+        static Puzzle createPuzzle(List<int[]> values)
         {
-            var result = new Code(values.Count);
+            var result = new Puzzle(values.Count);
 
             for (int i = 0; i < values.Count; i++)
                 result.SetPiece((PieceSymbol)(values[i][0] - 1), (PieceColor)(values[i][1] - 1), i);

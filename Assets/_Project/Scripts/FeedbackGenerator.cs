@@ -4,12 +4,12 @@ namespace Project
 {
     public class FeedbackGenerator
     {
-        Code _code;
+        Puzzle _puzzle;
         List<int> _piecesToCheck;
 
-        public FeedbackGenerator(Code code, List<int> piecesToCheck)
+        public FeedbackGenerator(Puzzle puzzle, List<int> piecesToCheck)
         {
-            _code = code;
+            _puzzle = puzzle;
             _piecesToCheck = piecesToCheck;
         }
 
@@ -17,30 +17,30 @@ namespace Project
         {
             Feedback result = new Feedback();
 
-            if (guess?.Pieces.Count != _code.Pieces.Count)
-                throw new System.InvalidOperationException("guess.Pieces length should match the code.Pieces length");
+            if (guess?.Pieces.Count != _puzzle.Pieces.Count)
+                throw new System.InvalidOperationException("guess.Pieces length should match the puzzle.Pieces length");
 
-            List<Piece> codePieces = new List<Piece>(_code.Pieces);
+            List<Piece> puzzlePieces = new List<Piece>(_puzzle.Pieces);
             List<Piece> guessPieces = new List<Piece>(guess.Pieces);
 
             result.ReferencingPieces = _piecesToCheck;
-            setCorrectPieces(ref result, codePieces, guessPieces);
-            setSimilarPieces(ref result, codePieces, guessPieces);
-            setDisplacedPieces(ref result, codePieces, guessPieces);
+            setCorrectPieces(ref result, puzzlePieces, guessPieces);
+            setSimilarPieces(ref result, puzzlePieces, guessPieces);
+            setDisplacedPieces(ref result, puzzlePieces, guessPieces);
 
             return result;
         }
 
-        void setCorrectPieces(ref Feedback result, List<Piece> codePieces, List<Piece> guessPieces)
+        void setCorrectPieces(ref Feedback result, List<Piece> puzzlePieces, List<Piece> guessPieces)
         {
-            for (int i = 0; i < codePieces.Count; i++)
+            for (int i = 0; i < puzzlePieces.Count; i++)
             {
-                if (codePieces[i].Equals(_nullPiece))
+                if (puzzlePieces[i].Equals(_nullPiece))
                     continue;
 
-                if (codePieces[i].Equals(guessPieces[i]))
+                if (puzzlePieces[i].Equals(guessPieces[i]))
                 {
-                    codePieces[i] = _nullPiece;
+                    puzzlePieces[i] = _nullPiece;
                     guessPieces[i] = _nullPiece;
 
                     if (_piecesToCheck.Contains(i))
@@ -49,19 +49,19 @@ namespace Project
             }
         }
 
-        void setSimilarPieces(ref Feedback result, List<Piece> codePieces, List<Piece> guessPieces)
+        void setSimilarPieces(ref Feedback result, List<Piece> puzzlePieces, List<Piece> guessPieces)
         {
-            for (int i = 0; i < codePieces.Count; i++)
+            for (int i = 0; i < puzzlePieces.Count; i++)
             {
-                if (codePieces[i].Equals(_nullPiece) || !_piecesToCheck.Contains(i))
+                if (puzzlePieces[i].Equals(_nullPiece) || !_piecesToCheck.Contains(i))
                     continue;
 
-                if (codePieces[i].IsSimilar(guessPieces[i]))
+                if (puzzlePieces[i].IsSimilar(guessPieces[i]))
                     result.SimilarPieces++;
             }
         }
 
-        void setDisplacedPieces(ref Feedback result, List<Piece> codePieces, List<Piece> guessPieces)
+        void setDisplacedPieces(ref Feedback result, List<Piece> puzzlePieces, List<Piece> guessPieces)
         {
             foreach (var pieceIndex in _piecesToCheck)
             {
@@ -69,10 +69,10 @@ namespace Project
                 if (guessPiece.Equals(_nullPiece))
                     continue;
 
-                if (codePieces.Contains(guessPiece))
+                if (puzzlePieces.Contains(guessPiece))
                 {
                     result.MisplacedPieces++;
-                    codePieces[codePieces.IndexOf(guessPiece)] = _nullPiece;
+                    puzzlePieces[puzzlePieces.IndexOf(guessPiece)] = _nullPiece;
                     guessPieces[pieceIndex] = _nullPiece;
                 }
             }

@@ -24,7 +24,7 @@ namespace Project
                     }
         }
 
-        public int CodeCount;
+        public int PuzzleCount;
         public int SymbolCount;
         public int ColorCount;
 

@@ -21,9 +21,9 @@ namespace Project
             Container.Bind<ScrollRect>().FromComponentInHierarchy().AsCached();
 
             Container.BindInstance(_playCanvas).WithId("playCanvas").AsCached();
-            Container.Bind<CodeGenerator>().AsCached()
+            Container.Bind<PuzzleGenerator>().AsCached()
                      .WithArguments(
-                         attemptResultUI.CodeCount,
+                         attemptResultUI.PuzzleCount,
                          attemptResultUI.SymbolCount,
                          attemptResultUI.ColorCount);
 

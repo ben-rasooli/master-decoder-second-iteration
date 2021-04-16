@@ -3,11 +3,11 @@ using System.Text;
 
 namespace Project
 {
-    public class Code
+    public class Puzzle
     {
         public List<Piece> Pieces { get; private set; }
 
-        public Code(int count)
+        public Puzzle(int count)
         {
             Pieces = new List<Piece>();
 
@@ -27,7 +27,7 @@ namespace Project
         {
             StringBuilder sb = new StringBuilder();
             Pieces.ForEach(x => sb.Append(string.Format("({0}-{1})", x.Symbol, x.Color.ToString().Substring(0, 1))));
-            return string.Format("[Code: {0}]", sb);
+            return string.Format("[Puzzle: {0}]", sb);
         }
     }
 }

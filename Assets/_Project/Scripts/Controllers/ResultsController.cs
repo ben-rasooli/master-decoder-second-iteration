@@ -11,7 +11,7 @@ namespace Project
     {
         #region ----------------------------------------dependencies
         [Inject] SignalBus _signalBus;
-        [Inject] CodeGenerator _codeGenerator;
+        [Inject] PuzzleGenerator _puzzleGenerator;
         [Inject(Id = "guessingPanel")] RectTransform _guessingPanel;
         [Inject] AttemptResultsUI _attemptResultsUI;
         [Inject] AttemptResultUI _attemptResultUI;
@@ -20,15 +20,15 @@ namespace Project
         #region ----------------------------------------API
         public void Initialize()
         {
-            _code = _codeGenerator.Generate();
+            _puzzle = _puzzleGenerator.Generate();
             _attemptResult = new AttemptResult();
-            _attemptResult.Guess = new Guess(_code.Pieces.Count);
+            _attemptResult.Guess = new Guess(_puzzle.Pieces.Count);
             _attemptResult.Feedbacks = new List<Feedback>();
 
             foreach (var feedbackUI in _attemptResultUI.FeedbackUIs)
                 _feedbackGenerators.Add(
                     new FeedbackGenerator(
-                        _code, 
+                        _puzzle, 
                         feedbackUI.ReferencingPieces));
         }
 
@@ -43,16 +43,16 @@ namespace Project
         void checkGameOverCondition()
         {
             Feedback totalFeedback = _attemptResult.Feedbacks
-                          .First(feedback => feedback.ReferencingPieces.Count == _code.Pieces.Count);
+                          .First(feedback => feedback.ReferencingPieces.Count == _puzzle.Pieces.Count);
 
-            if (totalFeedback.CorrectPieces == _code.Pieces.Count){
+            if (totalFeedback.CorrectPieces == _puzzle.Pieces.Count){
                 _signalBus.Fire<GameIsOverSignal>();
             }
         }
         #endregion
 
         #region ----------------------------------------details
-        Code _code;
+        Puzzle _puzzle;
         AttemptResult _attemptResult;
         List<FeedbackGenerator> _feedbackGenerators = new List<FeedbackGenerator>();
 

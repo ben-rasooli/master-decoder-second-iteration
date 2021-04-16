@@ -625,3 +625,143 @@ System memory in use after: 272.6 MB.
 Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 4732.
 Total: 4.684583 ms (FindLiveObjects: 0.249084 ms CreateObjectMapping: 0.104833 ms MarkObjects: 3.903208 ms  DeleteObjects: 0.426250 ms)
 
+========================================================================
+Received Import Request.
+  Time since last request: 1976.452206 seconds.
+  path: Assets/_Project/Tests/FeedbackGeneratorTests.cs
+  artifactKey: Guid(f186c8191dee84d41a575d097db3b11a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Project/Tests/FeedbackGeneratorTests.cs using Guid(f186c8191dee84d41a575d097db3b11a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '892e18fe7a2b966d0f84d6e090c373bd') in 1.622569 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000219 seconds.
+  path: Assets/_Project/Tests/Tests.asmdef
+  artifactKey: Guid(f071f05b46e704938b34495e41915d0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Project/Tests/Tests.asmdef using Guid(f071f05b46e704938b34495e41915d0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0cfc66d442222ed5fd9d23f1c577e420') in 0.183094 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004084 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.97 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.TypeInitializationException: The type initializer for 'Doozy.Engine.Utils.DoozyPath' threw an exception. ---> System.ArgumentException: The specified path is not of a legal form (empty).
+  at System.IO.Path.InsecureGetFullPath (System.String path) [0x00025] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.Path.GetFullPathInternal (System.String path) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo.Init (System.String fileName, System.Boolean checkHost) [0x00007] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo..ctor (System.String fileName) [0x00014] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileInfo..ctor(string)
+  at Doozy.Engine.Utils.DoozyPath.get_BasePath () [0x0003b] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Engine/Utils/DoozyPath.cs:158 
+  at Doozy.Engine.Utils.DoozyPath..cctor () [0x00000] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Engine/Utils/DoozyPath.cs:62 
+   --- End of inner exception stack trace ---
+  at Doozy.Editor.Internal.ProcessorsSettings.get_Instance () [0x00018] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Editor/Internal/ProcessorsSettings.cs:23 
+  at Doozy.Editor.Internal.DoozyAssetsProcessor.ExecuteProcessor () [0x0003f] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Editor/Internal/DoozyAssetsProcessor.cs:44 
+  at Doozy.Editor.Internal.DoozyAssetsProcessor..cctor () [0x00001] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Editor/Internal/DoozyAssetsProcessor.cs:25 
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs:118)
+
+(Filename: /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs Line: 37)
+
+System.TypeInitializationException: The type initializer for 'Doozy.Engine.Utils.DoozyPath' threw an exception. ---> System.ArgumentException: The specified path is not of a legal form (empty).
+  at System.IO.Path.InsecureGetFullPath (System.String path) [0x00025] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.Path.GetFullPathInternal (System.String path) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo.Init (System.String fileName, System.Boolean checkHost) [0x00007] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo..ctor (System.String fileName) [0x00014] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileInfo..ctor(string)
+  at Doozy.Engine.Utils.DoozyPath.get_BasePath () [0x0003b] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Engine/Utils/DoozyPath.cs:158 
+  at Doozy.Engine.Utils.DoozyPath..cctor () [0x00000] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Engine/Utils/DoozyPath.cs:62 
+   --- End of inner exception stack trace ---
+  at Doozy.Editor.Internal.ProcessorsSettings.get_Instance () [0x00018] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Editor/Internal/ProcessorsSettings.cs:23 
+  at Doozy.Editor.Internal.FoldersProcessor.ExecuteProcessor () [0x0000c] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Editor/Internal/FoldersProcessor.cs:20 
+  at Doozy.Editor.Internal.FoldersProcessor..cctor () [0x00001] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Editor/Internal/FoldersProcessor.cs:15 
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs:118)
+
+(Filename: /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs Line: 37)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.589 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.94 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4129 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 281.1 MB.
+System memory in use after: 281.4 MB.
+
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 4735.
+Total: 4.299917 ms (FindLiveObjects: 0.243042 ms CreateObjectMapping: 0.103750 ms MarkObjects: 3.916625 ms  DeleteObjects: 0.035458 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 2282.055274 seconds.
+  path: Assets/_Project/Tests/FeedbackGeneratorTests.cs
+  artifactKey: Guid(f186c8191dee84d41a575d097db3b11a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Project/Tests/FeedbackGeneratorTests.cs using Guid(f186c8191dee84d41a575d097db3b11a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02e2d70650c48e86bea0fa0eee89bf5b') in 0.009571 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002224 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.96 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.TypeInitializationException: The type initializer for 'Doozy.Engine.Utils.DoozyPath' threw an exception. ---> System.ArgumentException: The specified path is not of a legal form (empty).
+  at System.IO.Path.InsecureGetFullPath (System.String path) [0x00025] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.Path.GetFullPathInternal (System.String path) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo.Init (System.String fileName, System.Boolean checkHost) [0x00007] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo..ctor (System.String fileName) [0x00014] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileInfo..ctor(string)
+  at Doozy.Engine.Utils.DoozyPath.get_BasePath () [0x0003b] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Engine/Utils/DoozyPath.cs:158 
+  at Doozy.Engine.Utils.DoozyPath..cctor () [0x00000] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Engine/Utils/DoozyPath.cs:62 
+   --- End of inner exception stack trace ---
+  at Doozy.Editor.Internal.ProcessorsSettings.get_Instance () [0x00018] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Editor/Internal/ProcessorsSettings.cs:23 
+  at Doozy.Editor.Internal.DoozyAssetsProcessor.ExecuteProcessor () [0x0003f] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Editor/Internal/DoozyAssetsProcessor.cs:44 
+  at Doozy.Editor.Internal.DoozyAssetsProcessor..cctor () [0x00001] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Editor/Internal/DoozyAssetsProcessor.cs:25 
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs:118)
+
+(Filename: /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs Line: 37)
+
+System.TypeInitializationException: The type initializer for 'Doozy.Engine.Utils.DoozyPath' threw an exception. ---> System.ArgumentException: The specified path is not of a legal form (empty).
+  at System.IO.Path.InsecureGetFullPath (System.String path) [0x00025] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.Path.GetFullPathInternal (System.String path) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo.Init (System.String fileName, System.Boolean checkHost) [0x00007] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo..ctor (System.String fileName) [0x00014] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileInfo..ctor(string)
+  at Doozy.Engine.Utils.DoozyPath.get_BasePath () [0x0003b] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Engine/Utils/DoozyPath.cs:158 
+  at Doozy.Engine.Utils.DoozyPath..cctor () [0x00000] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Engine/Utils/DoozyPath.cs:62 
+   --- End of inner exception stack trace ---
+  at Doozy.Editor.Internal.ProcessorsSettings.get_Instance () [0x00018] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Editor/Internal/ProcessorsSettings.cs:23 
+  at Doozy.Editor.Internal.FoldersProcessor.ExecuteProcessor () [0x0000c] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Editor/Internal/FoldersProcessor.cs:20 
+  at Doozy.Editor.Internal.FoldersProcessor..cctor () [0x00001] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration/Assets/Doozy/Editor/Internal/FoldersProcessor.cs:15 
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs:118)
+
+(Filename: /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs Line: 37)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.628 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.94 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4129 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 281.5 MB.
+System memory in use after: 281.7 MB.
+
+Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 4738.
+Total: 4.370000 ms (FindLiveObjects: 0.198459 ms CreateObjectMapping: 0.105375 ms MarkObjects: 4.027084 ms  DeleteObjects: 0.037833 ms)
+
