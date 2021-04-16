@@ -12,9 +12,7 @@ namespace Project
 
         protected override void OnInit()
         {
-            _mainController = graphBlackboard
-                .GetVariable<DiContainer>("DiContainer").GetValue()
-                .Resolve<MainController>();
+            _mainController = ((DiContainer)graphBlackboard.variables["DiContainer"].value).Resolve<MainController>();
         }
 
         protected override void OnEnter()

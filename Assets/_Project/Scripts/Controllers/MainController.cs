@@ -28,20 +28,18 @@ namespace Project
 
         public void HandleMainMenu_LevelButtonClick()
         {
-            _FSM.SendEvent(gotoPlayState, null);
+            _FSM.SendEvent("gotoPlayState", null, null);
         }
-        EventData gotoPlayState = new EventData("gotoPlayState");
 
         public void Handle_GameOverPopupButtonClick()
         {
-            _FSM.SendEvent(gotoMainMenuState, null);
+            _FSM.SendEvent("gotoMainMenuState", null, null);
         }
 
         public void HandlePlay_BackButtonClick()
         {
-            _FSM.SendEvent(gotoMainMenuState, null);
+            _FSM.SendEvent("gotoMainMenuState", null, null);
         }
-        EventData gotoMainMenuState = new EventData("gotoMainMenuState");
         #endregion
 
         #region ----------------------------------------

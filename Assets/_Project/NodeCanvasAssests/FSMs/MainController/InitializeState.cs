@@ -12,13 +12,12 @@ namespace Project
 
         protected override void OnInit()
         {
-            _mainController = graphBlackboard.GetVariable<DiContainer>("DiContainer").value.Resolve<MainController>();
+            _mainController = ((DiContainer)graphBlackboard.parent.variables["DiContainer"].value).Resolve<MainController>();
         }
 
         protected override void OnEnter()
         {
-            FSM.SendEvent(gotoMainMenuState, null);
+            FSM.SendEvent("gotoMainMenuState", null, null);
         }
-        EventData gotoMainMenuState = new EventData("gotoMainMenuState");
     }
 }

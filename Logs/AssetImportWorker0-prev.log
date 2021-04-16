@@ -1,0 +1,264 @@
+Using pre-set license
+
+ COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/2021.1.0f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration-master
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+54776
+Successfully changed project path to: /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration-master
+/Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration-master
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 85.13 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.1.0f1 (61a549675243)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2021.1.0f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration-master/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+2021-04-16 23:42:37.152 Unity[49461:12375716] (null) preferred device: Apple M1 (high power)
+2021-04-16 23:42:37.152 Unity[49461:12375716] Metal devices available: 1
+2021-04-16 23:42:37.152 Unity[49461:12375716] 0: Apple M1 (high power)
+2021-04-16 23:42:37.152 Unity[49461:12375716] Using device Apple M1 (high power)
+Initializing Metal device caps: Apple M1
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/2021.1.0f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2021.1.0f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/Applications/Unity/Hub/Editor/2021.1.0f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56461
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/2021.1.0f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Registered in 0.002699 seconds.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 84.44 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.561 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.005178 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 86.63 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.657 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Default Renderer is missing, make sure there is a Renderer assigned as the default on the current Universal RP asset:LWRP-MediumQuality
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogError (object,UnityEngine.Object)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:CreatePipeline () (at Library/PackageCache/com.unity.render-pipelines.universal@11.0.0/Runtime/Data/UniversalRenderPipelineAsset.cs:300)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:get_scriptableRendererData () (at Library/PackageCache/com.unity.render-pipelines.universal@11.0.0/Runtime/Data/UniversalRenderPipelineAsset.cs:451)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:get_defaultShader () (at Library/PackageCache/com.unity.render-pipelines.universal@11.0.0/Runtime/Data/UniversalRenderPipelineAsset.cs:797)
+
+(Filename: Library/PackageCache/com.unity.render-pipelines.universal@11.0.0/Runtime/Data/UniversalRenderPipelineAsset.cs Line: 300)
+
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Launching external process: /Applications/Unity/Hub/Editor/2021.1.0f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.96 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4223 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 262.0 MB.
+System memory in use after: 262.2 MB.
+
+Unloading 67 unused Assets to reduce memory usage. Loaded Objects now: 4677.
+Total: 5.347416 ms (FindLiveObjects: 0.241041 ms CreateObjectMapping: 0.128583 ms MarkObjects: 4.888375 ms  DeleteObjects: 0.087917 ms)
+
+Default Renderer is missing, make sure there is a Renderer assigned as the default on the current Universal RP asset:LWRP-MediumQuality
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogError (object,UnityEngine.Object)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:CreatePipeline () (at Library/PackageCache/com.unity.render-pipelines.universal@11.0.0/Runtime/Data/UniversalRenderPipelineAsset.cs:300)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:get_scriptableRendererData () (at Library/PackageCache/com.unity.render-pipelines.universal@11.0.0/Runtime/Data/UniversalRenderPipelineAsset.cs:451)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:get_defaultShader () (at Library/PackageCache/com.unity.render-pipelines.universal@11.0.0/Runtime/Data/UniversalRenderPipelineAsset.cs:797)
+
+(Filename: Library/PackageCache/com.unity.render-pipelines.universal@11.0.0/Runtime/Data/UniversalRenderPipelineAsset.cs Line: 300)
+
+========================================================================
+Received Import Request.
+  path: Assets/_Project/Project.asmdef
+  artifactKey: Guid(9f462c1d825ce4d2aa9ba5d3a9842ed7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Project/Project.asmdef using Guid(9f462c1d825ce4d2aa9ba5d3a9842ed7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e38b96d4580c90abb8ece772f5823664') in 0.503722 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 43.663843 seconds.
+  path: Assets/Doozy/Editor
+  artifactKey: Guid(a0a15efec7ce57f45a6e41eb2d00d19a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Doozy/Editor using Guid(a0a15efec7ce57f45a6e41eb2d00d19a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '470b5a1b50710ea760188ecc90bffb2e') in 0.001462 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 253.481753 seconds.
+  path: Assets/Doozy/Engine
+  artifactKey: Guid(c3c2d731a5f278341a3792cf2769c87f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Doozy/Engine using Guid(c3c2d731a5f278341a3792cf2769c87f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ad4b7553417a3ce3fce5d60f3f1759a') in 0.001884 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 67.767937 seconds.
+  path: Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.Scripts.asmdef
+  artifactKey: Guid(5ac7756f2eaa343549450bf7a4652a56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.Scripts.asmdef using Guid(5ac7756f2eaa343549450bf7a4652a56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d4c5cfa38196761c21a6904f534180c') in 0.004932 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 39.164265 seconds.
+  path: Assets/RenderingSettings
+  artifactKey: Guid(0735c275001a2c84dafdb30deced5d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RenderingSettings using Guid(0735c275001a2c84dafdb30deced5d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34f9ada959a0d54082779f3832c946b5') in 0.001679 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.630511 seconds.
+  path: Assets/Plugins/Demigiant
+  artifactKey: Guid(1630ac61736a544a4b2032323a7aca9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Demigiant using Guid(1630ac61736a544a4b2032323a7aca9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b3dc4a7a896b297be882e1c078f5960') in 0.001717 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.150925 seconds.
+  path: Assets/Doozy
+  artifactKey: Guid(17ca49d8cc9847d4796b9c5c72231442) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Doozy using Guid(17ca49d8cc9847d4796b9c5c72231442) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fac4954b31846230f0f7adaf61fcdfc2') in 0.002755 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 94.423396 seconds.
+  path: Assets/Doozy/Doozy.asmdef
+  artifactKey: Guid(0621ea912723f43ec999ea4d8a806705) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Doozy/Doozy.asmdef using Guid(0621ea912723f43ec999ea4d8a806705) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05259f1949da41feacda915a61139bd9') in 0.002328 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 17.874104 seconds.
+  path: Assets/Doozy/Editor/Doozy.Editor.asmdef
+  artifactKey: Guid(80faefdd2372f44fbab1e9b9d7b774b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Doozy/Editor/Doozy.Editor.asmdef using Guid(80faefdd2372f44fbab1e9b9d7b774b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1db64b81f814ad19b185c8e9db91cafa') in 0.002153 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 48.146391 seconds.
+  path: Assets/Doozy/Editor/Doozy.Editor.asmdef
+  artifactKey: Guid(80faefdd2372f44fbab1e9b9d7b774b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Doozy/Editor/Doozy.Editor.asmdef using Guid(80faefdd2372f44fbab1e9b9d7b774b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8663232ec0a8c8d7ff63aa31ac1a5604') in 0.001042 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 62.925412 seconds.
+  path: Assets/Doozy/Doozy.asmdef
+  artifactKey: Guid(0621ea912723f43ec999ea4d8a806705) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Doozy/Doozy.asmdef using Guid(0621ea912723f43ec999ea4d8a806705) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2854f3c3cf71c51f7be1e579d5faa569') in 0.002041 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 42.774183 seconds.
+  path: Assets/Doozy/Doozy.asmdef
+  artifactKey: Guid(0621ea912723f43ec999ea4d8a806705) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Doozy/Doozy.asmdef using Guid(0621ea912723f43ec999ea4d8a806705) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bde2a8b070b4d60f924712826fb81583') in 0.001052 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 101.632946 seconds.
+  path: Assets/_Project/Project.asmdef
+  artifactKey: Guid(9f462c1d825ce4d2aa9ba5d3a9842ed7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Project/Project.asmdef using Guid(9f462c1d825ce4d2aa9ba5d3a9842ed7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd7e69532964ffe0c180e7e3fc67fa4fc') in 0.004306 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 629.957449 seconds.
+  path: Assets/RenderingSettings/LWRP-HighQuality.asset
+  artifactKey: Guid(19ba41d7c0026c3459d37c2fe90c55a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RenderingSettings/LWRP-HighQuality.asset using Guid(19ba41d7c0026c3459d37c2fe90c55a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36066f95095a450557cb4c12a6babafc') in 0.391171 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.086035 seconds.
+  path: Assets/RenderingSettings/LWRP-MediumQuality.asset
+  artifactKey: Guid(d847b876476d3d6468f5dfcd34266f96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RenderingSettings/LWRP-MediumQuality.asset using Guid(d847b876476d3d6468f5dfcd34266f96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '416f53fc7a2560a3c12e6f2ef6675533') in 0.004220 seconds 
+========================================================================
+Received Prepare
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 11.04 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 44 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 182.1 MB.
+System memory in use after: 182.4 MB.
+
+Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 4678.
+Total: 12.931084 ms (FindLiveObjects: 0.226500 ms CreateObjectMapping: 0.119625 ms MarkObjects: 11.492250 ms  DeleteObjects: 1.091167 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 154.410159 seconds.
+  path: Assets/Doozy/Editor/Doozy.Editor.asmdef
+  artifactKey: Guid(80faefdd2372f44fbab1e9b9d7b774b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Doozy/Editor/Doozy.Editor.asmdef using Guid(80faefdd2372f44fbab1e9b9d7b774b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63cbea0ee0f96dc6dcc75161930a0179') in 0.004759 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 300.746236 seconds.
+  path: Assets/Doozy/Editor/Doozy.Editor.asmdef
+  artifactKey: Guid(80faefdd2372f44fbab1e9b9d7b774b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Doozy/Editor/Doozy.Editor.asmdef using Guid(80faefdd2372f44fbab1e9b9d7b774b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45fa57610190c85e7146d6cba1824b0e') in 0.004068 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002893 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.66 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.TypeInitializationException: The type initializer for 'Doozy.Engine.Utils.DoozyPath' threw an exception. ---> System.ArgumentException: The specified path is not of a legal form (empty).
+  at System.IO.Path.InsecureGetFullPath (System.String path) [0x00025] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.Path.GetFullPathInternal (System.String path) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo.Init (System.String fileName, System.Boolean checkHost) [0x00007] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo..ctor (System.String fileName) [0x00014] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileInfo..ctor(string)
+  at Doozy.Engine.Utils.DoozyPath.get_BasePath () [0x00029] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration-master/Assets/Doozy/Engine/Utils/DoozyPath.cs:158 
+  at Doozy.Engine.Utils.DoozyPath..cctor () [0x00000] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration-master/Assets/Doozy/Engine/Utils/DoozyPath.cs:62 
+   --- End of inner exception stack trace ---
+  at Doozy.Editor.Internal.ProcessorsSettings.get_Instance () [0x00013] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration-master/Assets/Doozy/Editor/Internal/ProcessorsSettings.cs:23 
+  at Doozy.Editor.Internal.DoozyAssetsProcessor.ExecuteProcessor () [0x00033] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration-master/Assets/Doozy/Editor/Internal/DoozyAssetsProcessor.cs:44 
+  at Doozy.Editor.Internal.DoozyAssetsProcessor..cctor () [0x00000] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration-master/Assets/Doozy/Editor/Internal/DoozyAssetsProcessor.cs:25 
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs:118)
+
+(Filename: /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs Line: 37)
+
+System.TypeInitializationException: The type initializer for 'Doozy.Engine.Utils.DoozyPath' threw an exception. ---> System.ArgumentException: The specified path is not of a legal form (empty).
+  at System.IO.Path.InsecureGetFullPath (System.String path) [0x00025] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.Path.GetFullPathInternal (System.String path) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo.Init (System.String fileName, System.Boolean checkHost) [0x00007] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo..ctor (System.String fileName) [0x00014] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileInfo..ctor(string)
+  at Doozy.Engine.Utils.DoozyPath.get_BasePath () [0x00029] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration-master/Assets/Doozy/Engine/Utils/DoozyPath.cs:158 
+  at Doozy.Engine.Utils.DoozyPath..cctor () [0x00000] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration-master/Assets/Doozy/Engine/Utils/DoozyPath.cs:62 
+   --- End of inner exception stack trace ---
+  at Doozy.Editor.Internal.ProcessorsSettings.get_Instance () [0x00013] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration-master/Assets/Doozy/Editor/Internal/ProcessorsSettings.cs:23 
+  at Doozy.Editor.Internal.FoldersProcessor.ExecuteProcessor () [0x00008] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration-master/Assets/Doozy/Editor/Internal/FoldersProcessor.cs:20 
+  at Doozy.Editor.Internal.FoldersProcessor..cctor () [0x00000] in /Users/behnamrasooli/Documents/Unity Projects/master-decoder-second-iteration-master/Assets/Doozy/Editor/Internal/FoldersProcessor.cs:15 
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs:118)
+
+(Filename: /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs Line: 37)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.734 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.35 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4128 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 268.1 MB.
+System memory in use after: 268.4 MB.
+
+Unloading 64 unused Assets to reduce memory usage. Loaded Objects now: 4663.
+Total: 4.678833 ms (FindLiveObjects: 0.194042 ms CreateObjectMapping: 0.114084 ms MarkObjects: 4.285458 ms  DeleteObjects: 0.084167 ms)
+
