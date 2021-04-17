@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -23,12 +22,15 @@ namespace Project
             _puzzle = _puzzleGenerator.Generate();
             _attemptResult = new AttemptResult();
             _attemptResult.Guess = new Guess(_puzzle.Pieces.Count);
+            _attemptResult.OveralFeedback = new OverallFeedback();
             _attemptResult.Feedbacks = new List<Feedback>();
+
+            _overallFeedbackGenerator = new OverallFeedbackGenerator(_puzzle);
 
             foreach (var feedbackUI in _attemptResultUI.FeedbackUIs)
                 _feedbackGenerators.Add(
                     new FeedbackGenerator(
-                        _puzzle, 
+                        _puzzle,
                         feedbackUI.ReferencingPieces));
         }
 
@@ -42,18 +44,15 @@ namespace Project
 
         void checkGameOverCondition()
         {
-            Feedback totalFeedback = _attemptResult.Feedbacks
-                          .First(feedback => feedback.ReferencingPieces.Count == _puzzle.Pieces.Count);
-
-            if (totalFeedback.CorrectPieces == _puzzle.Pieces.Count){
+            if (_attemptResult.OveralFeedback.CorrectPieces == _puzzle.Pieces.Count)
                 _signalBus.Fire<GameIsOverSignal>();
-            }
         }
         #endregion
 
         #region ----------------------------------------details
         Puzzle _puzzle;
         AttemptResult _attemptResult;
+        OverallFeedbackGenerator _overallFeedbackGenerator;
         List<FeedbackGenerator> _feedbackGenerators = new List<FeedbackGenerator>();
 
         void getGuessPiecesFromGuessingPanel()
@@ -65,6 +64,9 @@ namespace Project
 
         void setAttemptResultFeedbacks()
         {
+            OverallFeedback overalFeedback = _overallFeedbackGenerator.Calculate(_attemptResult.Guess);
+            _attemptResult.OveralFeedback = overalFeedback;
+
             _attemptResult.Feedbacks.Clear();
             foreach (var feedbackGenerator in _feedbackGenerators)
             {

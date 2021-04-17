@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Project
 {
@@ -26,7 +27,6 @@ namespace Project
             result.ReferencingPieces = _piecesToCheck;
             setCorrectPieces(ref result, puzzlePieces, guessPieces);
             setSimilarPieces(ref result, puzzlePieces, guessPieces);
-            setDisplacedPieces(ref result, puzzlePieces, guessPieces);
 
             return result;
         }
@@ -35,13 +35,13 @@ namespace Project
         {
             for (int i = 0; i < puzzlePieces.Count; i++)
             {
-                if (puzzlePieces[i].Equals(_nullPiece))
+                if (puzzlePieces[i].Equals(Piece.Null))
                     continue;
 
                 if (puzzlePieces[i].Equals(guessPieces[i]))
                 {
-                    puzzlePieces[i] = _nullPiece;
-                    guessPieces[i] = _nullPiece;
+                    puzzlePieces[i] = Piece.Null;
+                    guessPieces[i] = Piece.Null;
 
                     if (_piecesToCheck.Contains(i))
                         result.CorrectPieces++;
@@ -53,33 +53,12 @@ namespace Project
         {
             for (int i = 0; i < puzzlePieces.Count; i++)
             {
-                if (puzzlePieces[i].Equals(_nullPiece) || !_piecesToCheck.Contains(i))
+                if (puzzlePieces[i].Equals(Piece.Null) || !_piecesToCheck.Contains(i))
                     continue;
 
                 if (puzzlePieces[i].IsSimilar(guessPieces[i]))
                     result.SimilarPieces++;
             }
         }
-
-        void setDisplacedPieces(ref Feedback result, List<Piece> puzzlePieces, List<Piece> guessPieces)
-        {
-            foreach (var pieceIndex in _piecesToCheck)
-            {
-                Piece guessPiece = guessPieces[pieceIndex];
-                if (guessPiece.Equals(_nullPiece))
-                    continue;
-
-                if (puzzlePieces.Contains(guessPiece))
-                {
-                    result.MisplacedPieces++;
-                    puzzlePieces[puzzlePieces.IndexOf(guessPiece)] = _nullPiece;
-                    guessPieces[pieceIndex] = _nullPiece;
-                }
-            }
-        }
-
-        #region ----------------------------------------details
-        Piece _nullPiece = new Piece { Symbol = PieceSymbol.None, Color = PieceColor.None };
-        #endregion
     }
 }

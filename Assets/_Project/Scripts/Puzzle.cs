@@ -15,7 +15,7 @@ namespace Project
                 Pieces.Add(new Piece { Symbol = PieceSymbol.One, Color = PieceColor.White });
         }
 
-        public void SetPiece(PieceSymbol symbol, PieceColor color, int index)
+        public void SetPiece(int index, PieceSymbol symbol, PieceColor color)
         {
             Piece piece;
             piece.Symbol = symbol;

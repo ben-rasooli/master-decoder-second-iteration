@@ -6,7 +6,6 @@ namespace Project
     {
         public List<int> ReferencingPieces;
         public int CorrectPieces;
-        public int MisplacedPieces;
         public int SimilarPieces;
     }
 }

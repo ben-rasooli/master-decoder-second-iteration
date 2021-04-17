@@ -5,6 +5,14 @@
         public PieceSymbol Symbol;
         public PieceColor Color;
 
+        public Piece(PieceSymbol symbol, PieceColor color)
+        {
+            Symbol = symbol;
+            Color = color;
+        }
+
+        public static Piece Null = new Piece { Symbol = PieceSymbol.None, Color = PieceColor.None };
+
         #region ----------------------------------------overrides
         public override string ToString()
         {

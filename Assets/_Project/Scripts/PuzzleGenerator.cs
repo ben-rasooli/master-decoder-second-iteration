@@ -21,7 +21,7 @@
             {
                 int randomSymbolIndex = UnityEngine.Random.Range(0, _symbolCount);
                 int randomColorIndex = UnityEngine.Random.Range(0, _colorCount);
-                result.SetPiece((PieceSymbol)randomSymbolIndex, (PieceColor)randomColorIndex, i);
+                result.SetPiece(i, (PieceSymbol)randomSymbolIndex, (PieceColor)randomColorIndex);
             }
 #if UNITY_EDITOR
             UnityEngine.Debug.Log(result.ToString());

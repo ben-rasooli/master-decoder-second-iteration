@@ -14,12 +14,15 @@ namespace Project
             for (int i = 0; i < result.Guess.Pieces.Count; i++)
                 _pieceUIs[i].Init(result.Guess.Pieces[i]);
 
+            OveralFeedbackUI.CorrectPieces.text = result.OveralFeedback.CorrectPieces.ToString();
+            OveralFeedbackUI.SimilarPieces.text = result.OveralFeedback.SimilarPieces.ToString();
+            OveralFeedbackUI.MisplacedPieces.text = result.OveralFeedback.MisplacedPieces.ToString();
+
             foreach (var feedback in result.Feedbacks)
                 foreach (var ui in FeedbackUIs)
                     if (ui.ReferencingPieces.SequenceEqual(feedback.ReferencingPieces))
                     {
                         ui.CorrectPieces.text = feedback.CorrectPieces.ToString();
-                        ui.MisplacedPieces.text = feedback.MisplacedPieces.ToString();
                         ui.SimilarPieces.text = feedback.SimilarPieces.ToString();
                     }
         }
@@ -28,6 +31,7 @@ namespace Project
         public int SymbolCount;
         public int ColorCount;
 
+        public OveralFeedbackUI OveralFeedbackUI;
         public List<FeedbackUI> FeedbackUIs;
         #endregion
 
@@ -43,12 +47,18 @@ namespace Project
         #endregion
     }
 
+    public class OveralFeedbackUI
+    {
+        public TextMeshProUGUI CorrectPieces;
+        public TextMeshProUGUI SimilarPieces;
+        public TextMeshProUGUI MisplacedPieces;
+    }
+
     [System.Serializable]
     public class FeedbackUI
     {
         public List<int> ReferencingPieces;
         public TextMeshProUGUI CorrectPieces;
-        public TextMeshProUGUI MisplacedPieces;
         public TextMeshProUGUI SimilarPieces;
     }
 }
